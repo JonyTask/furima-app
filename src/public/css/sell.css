@@ -1,0 +1,53 @@
+.sell__img{
+    border: 1px dotted #5F5F5F;
+    border-radius: 5px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading__name{
+    color: #5F5F5F;
+    font-size: 24px;
+    border-bottom: 1px solid #5F5F5F;
+    padding-bottom: 10px;
+    margin-top: 50px;
+}
+
+.sell__category{
+    display: inline-block;
+    margin: 15px 10px;
+}
+
+.sell__check{
+    display: none;
+}
+
+.sell__check-label{
+    background-color: #ffffff;
+    border: 1px solid #FF5555;
+    color: #FF5555;
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+
+.sell__check-label:hover{
+    cursor: pointer;
+}
+
+.sell__check[type="checkbox"]:checked + label{
+    background-color: #FF5555;
+    color: #ffffff;
+}
+
+.sell__select:hover{
+    cursor: pointer;
+}
+
+.textarea{
+    width: 100%;
+    height: 125px;
+    overflow-y: scroll;
+}

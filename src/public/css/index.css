@@ -1,0 +1,41 @@
+.items{
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 35px 10px;
+}
+
+.item{
+
+}
+
+.item__img{
+    background-color: rgb(208, 208, 208);
+    border-radius: 5px;
+    width: 15em;
+    height: 15em;
+}
+
+.item__name{
+    margin-top: 10px;
+}
+
+.border{
+    margin-top: 50px;
+}
+
+.border__list{
+    border-bottom: 1px solid #5F5F5F;
+    display: flex;
+}
+
+.border__list li:first-child{
+    padding-left: 10%;
+}
+
+.border__list li{
+    padding: 20px 80px;
+    font-weight: bold;
+}
