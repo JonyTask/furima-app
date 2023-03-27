@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('detail');
+    return view('index');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/mypage/profile', [UserController::class, 'profile']);
+    Route::post('/mypage/profile', [UserController::class, 'updateProfile']);
 });
