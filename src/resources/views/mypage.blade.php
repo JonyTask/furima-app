@@ -17,12 +17,16 @@
     <div class="user">
             <div class="user__info">
                 <div class="user__img">
-                    <img src="#" alt="">
+                    @if (isset($user->profile->img_url))
+                        <img class="user__icon" src="{{ \Storage::url($user->profile->img_url) }}" alt="">
+                    @else
+                        <img id="myImage" class="user__icon" src="{{ asset('img/icon.png') }}" alt="">
+                    @endif
                 </div>
-                <p class="user__name">ユーザ名</p>
+                <p class="user__name">{{$user->name}}</p>
             </div>
             <div class="mypage__user--btn">
-            <a class="btn2" href="#">プロフィールを編集</a>
+            <a class="btn2" href="/mypage/profile">プロフィールを編集</a>
             </div>
     </div>
     <div class="border">

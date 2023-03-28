@@ -7,6 +7,9 @@
     width: 450px;
     height: 550px;
     background-color: rgb(208, 208, 208);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .item__info{
@@ -17,7 +20,7 @@
 
 .item__info::-webkit-scrollbar{
     display: none;
-  }
+}
 
 .item__name{
     font-size: 36px;
@@ -39,7 +42,7 @@
 }
 
 .like__count{
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .item__comment{
@@ -52,7 +55,7 @@
 }
 
 .comment__count{
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .item__purchase{
@@ -65,18 +68,21 @@
 }
 
 .item__table th{
+    width: fit-content;
+    white-space: nowrap;
     padding: 30px 50px 30px 0;
 }
 
-.item__table ul{
+.item__table-category{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .item__table li{
     padding: 5px 15px;
     border-radius: 15px;
     background-color: #D9D9D9;
-    margin-right: 10px;
+    margin: 5px;
 }
 
 .comment_section{

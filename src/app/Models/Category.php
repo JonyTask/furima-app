@@ -8,5 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'category'
+    ];
+
+    public function categoryItem()
+    {
+        return $this->hasMany('App\Models\CategoryItem');
+    }
 }

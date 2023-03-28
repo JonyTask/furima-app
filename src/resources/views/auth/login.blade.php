@@ -30,6 +30,6 @@
         @enderror
     </div>
     <button class="btn btn--big">ログインする</button>
-    <a href="#" class="link">会員登録はこちら</a>
+    <a href="/register" class="link">会員登録はこちら</a>
 </form>
 @endsection

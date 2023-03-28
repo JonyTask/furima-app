@@ -20,16 +20,16 @@
 </div>
 <div class="container">
     <div class="items">
-        @for ($i = 0; $i < 18; $i++)
+        @foreach ($items as $item)
         <div class="item">
-            <a href="#">
+            <a href="/item/{{$item->id}}">
                 <div class="item__img">
-                    <img src="" alt="商品画像">
+                    <img src="{{ \Storage::url($item->img_url) }}" alt="商品画像">
                 </div>
-                <p class="item__name">商品名</p>
-            <a href="#">
+                <p class="item__name">{{$item->name}}</p>
+            </a>
         </div>
-        @endfor
+        @endforeach
     </div>
 </div>
 @endsection

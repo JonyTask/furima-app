@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ItemRequest;
+use App\Models\Item;
+use App\Models\Category;
+use App\Models\Condition;
+use App\Models\CategoryItem;
+
+class ItemController extends Controller
+{
+    public function index(Request $request){
+        $items = Item::all();
+        return view('index',compact('items'));
+    }
+
+    public function detail(Item $item){
+        // dd($item);
+        return view('detail', compact('item'));
+    }
+
+    public function sellView(){
+        $categories = Category::all();
+        $conditions = Condition::all();
+        return view('sell',compact('categories', 'conditions'));
+    }
+
+    public function sellCreate(ItemRequest $request){
+
+        $img = $request->img_url;
+        $img_url = $img->store('img','public');
+
+        $item = Item::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'img_url' => $img_url,
+            'condition_id' => $request->condition_id,
+            'user_id' => Auth::id(),
+        ]);
+
+        foreach ($request->categories as $category_id){
+            CategoryItem::create([
+                'item_id' => $item->id,
+                'category_id' => $category_id
+            ]);
+        }
+
+        return redirect()->route('item.detail',['item' => $item->id]);
+    }
+}

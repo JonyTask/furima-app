@@ -8,5 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    
+    protected $fillable = [
+        'user_id',
+        'img_url', 
+        'postcode', 
+        'address', 
+        'building', 
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

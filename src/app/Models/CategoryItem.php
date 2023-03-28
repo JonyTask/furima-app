@@ -8,5 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryItem extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+
+    protected $table = 'category_item';
+
+    protected $primaryKey = ['item_id', 'category_id'];
+
+    public $incrementing = false;
+
+    protected $fillable = [
+        'item_id', 
+        'category_id'
+    ];
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
+
+    public function item()
+    {
+        return $this->belongsTo('App\Models\Item');
+    }
 }

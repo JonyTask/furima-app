@@ -1,6 +1,6 @@
 <header class="header">
     <div class="header__logo">
-        <a href="/"><img src="img/logo.png" alt="ロゴ"></a>
+        <a href="/"><img src="{{ asset('img/logo.png') }}" alt="ロゴ"></a>
     </div>
     <nav class="header__nav">
         <ul>
@@ -16,7 +16,7 @@
             <li><a href="/login">ログイン</a></li>
             <li><a href="/register">会員登録</a></li>
             @endif
-            <li class="header__btn"><a href="#">出品</a></li>
+            <li class="header__btn"><a href="/sell">出品</a></li>
         </ul>
     </nav>
 </header>

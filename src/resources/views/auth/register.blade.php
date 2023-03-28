@@ -39,6 +39,6 @@
     <label for="password_confirm" class="entry__name">確認用パスワード</label>
     <input name="password_confirmation" id="password_confirm" type="password" class="input">
     <button class="btn btn--big">登録する</button>
-    <a href="#" class="link">ログインはこちら</a>
+    <a href="/login" class="link">ログインはこちら</a>
 </form>
 @endsection

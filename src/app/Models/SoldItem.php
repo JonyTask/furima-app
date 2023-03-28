@@ -8,5 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class SoldItem extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+
+    protected $primaryKey = ['user_id', 'item_id'];
+    
+    public $incrementing = false;
+
+    protected $fillable = [
+        'user_id',
+        'item_id'
+    ];
 }
