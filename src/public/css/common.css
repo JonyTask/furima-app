@@ -19,6 +19,10 @@ button{
     appearance: none;
 }
 
+select{
+    border: none;
+    outline: none;
+}
 
 header{
     align-items: center;

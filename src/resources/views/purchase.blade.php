@@ -28,9 +28,12 @@
             <div class="purchase">
                 <div class="purchase__flex">
                     <h3 class="purchase__title">支払い方法</h3>
-                    <a class="purchase__update" href="#">変更する</a>
+                    <!-- <a class="purchase__update" href="#">変更する</a> -->
                 </div>
-                <p class="purchase__value">コンビニ払い</p>
+                <select class="purchase__value" name="" id="payment">
+                    <option value="1">コンビニ払い</option>
+                    <option value="2">銀行振り込み</option>
+                </select>
             </div>
             <div class="purchase">
                 <div class="purchase__flex">
@@ -56,7 +59,7 @@
                 </tr>
                 <tr>
                     <th>支払い方法</th>
-                    <td>コンビニ払い</td>
+                    <td id="pay_confirm">コンビニ払い</td>
                 </tr>
             </table>
         </div>
@@ -73,4 +76,15 @@
     </div>
 </div>
 </div>
+<script>
+
+var select = document.getElementById('payment');
+select.addEventListener('change', () => {
+    const target = document.getElementById('pay_confirm');
+    var index = select.selectedIndex;
+    var txt = select.options[index].label;
+    target.textContent = txt;
+});
+
+</script>
 @endsection

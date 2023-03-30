@@ -39,7 +39,7 @@
     </div>
 
     <label for="postcode" class="entry__name">郵便番号</label>
-    <input name="postcode" id="postcode" type="text" class="input" value="{{ $profile ? $profile->postcode : '' }}">
+    <input name="postcode" id="postcode" type="text" class="input" value="{{ $profile ? $profile->postcode : '' }}" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');">
     <div class="form__error">
         @error('postcode')
             {{ $message }}

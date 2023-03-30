@@ -25,7 +25,7 @@
         @endif
         <div class="item__info">
             <h2 class="item__name">{{$item->name}}</h2>
-            <p class="item__price">{{number_format($item->price)}}</p>
+            <p class="item__price">¥ {{number_format($item->price)}}</p>
             <div class="item__form">
                 @if ($item->liked())
                 <form action="/item/unlike/{{$item->id}}" method="post" class="item__like">

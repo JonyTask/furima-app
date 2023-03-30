@@ -16,7 +16,7 @@
             <li><a href="/login">ログイン</a></li>
             <li><a href="/register">会員登録</a></li>
             @endif
-            <li class="header__btn"><a href="/sell">出品</a></li>
+            <a href="/sell"><li class="header__btn">出品</li></a>
         </ul>
     </nav>
 </header>
