@@ -9,7 +9,7 @@ class SoldItem extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = ['user_id', 'item_id'];
+    protected $primaryKey = 'item_id';
     
     public $incrementing = false;
 

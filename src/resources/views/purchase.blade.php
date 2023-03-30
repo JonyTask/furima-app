@@ -35,7 +35,7 @@
             <div class="purchase">
                 <div class="purchase__flex">
                     <h3 class="purchase__title">配送先</h3>
-                    <a class="purchase__update" href="#">変更する</a>
+                    <a class="purchase__update" href="/purchase/address/{{$item->id}}">変更する</a>
                 </div>
                 <div class="purchase__value">
                     <p>〒 {{$user->profile->postcode}}</p>
@@ -60,8 +60,15 @@
                 </tr>
             </table>
         </div>
-        <form action="#" method="post">
+        <form action="/purchase/{{$item->id}}" method="post">
+            @csrf
+            @if ($item->sold())
+            <button class="btn disable" disabled>売り切れました</button>
+            @elseif ($item->mine())
+            <button class="btn disable" disabled>購入できません</button>
+            @else
             <button class="btn">購入する</button>
+            @endif
         </form>
     </div>
 </div>

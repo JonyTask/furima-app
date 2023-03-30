@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
 use App\Models\User;
+use App\Models\Item;
+use App\Models\SoldItem;
 use App\Http\Requests\ProfileRequest;
 
 
@@ -21,8 +23,12 @@ class UserController extends Controller
     public function updateProfile(ProfileRequest $request){
 
         $img = $request->file('img_url');
-        $img_url = $img->store('img','public');
-
+        if (isset($img)){
+            $img_url = $img->store('img','public');
+        }else{
+            $img_url = '';
+        }
+        
         $profile = Profile::where('user_id', Auth::id())->first();
         if ($profile){
             $profile->update([
@@ -49,8 +55,15 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function mypage(){
+    public function mypage(Request $request){
         $user = User::find(Auth::id());
-        return view('mypage', compact('user'));
+        if ($request->page == 'buy'){
+            $items = SoldItem::where('user_id', $user->id)->get()->map(function ($sold_item) {
+                return $sold_item->item;
+            });         
+        }else {
+            $items = Item::where('user_id', $user->id)->get();
+        }
+        return view('mypage', compact('user', 'items'));
     }
 }

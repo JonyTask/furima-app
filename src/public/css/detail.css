@@ -12,6 +12,32 @@
     align-items: center;
 }
 
+.sold{
+    position: relative;
+}
+
+.sold::before {
+    content: "";
+    top: 0;
+    left: 0;
+    border-bottom: 6em solid transparent;
+    border-left: 6em solid #c12748;
+    position: absolute;
+    z-index: 100;
+}
+.sold::after {
+    content: "Sold";
+    display: block;
+    top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    transform: rotate(-45deg);
+    color: #fff;
+    left: 5px;
+    position: absolute;
+    z-index: 101;
+}
+
 .item__info{
     width: 450px;
     height: 75vh;

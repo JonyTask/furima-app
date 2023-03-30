@@ -31,21 +31,27 @@
     </div>
     <div class="border">
         <ul class="border__list">
-            <li><a href="#">出品した商品</a></li>
-            <li><a href="#">購入した商品</a></li>
+            <li><a href="/mypage?page=sell">出品した商品</a></li>
+            <li><a href="/mypage?page=buy">購入した商品</a></li>
         </ul>
     </div>
     <div class="items">
-        @for ($i = 0; $i < 18; $i++)
+        @foreach ($items as $item)
         <div class="item">
-            <a href="#">
-                <div class="item__img">
-                    <img src="" alt="商品画像">
-                </div>
-                <p class="item__name">商品名</p>
-            <a href="#">
+            <a href="/item/{{$item->id}}">
+                @if ($item->sold())
+                    <div class="item__img sold">
+                        <img src="{{ \Storage::url($item->img_url) }}" alt="商品画像">
+                    </div>
+                @else
+                    <div class="item__img">
+                        <img src="{{ \Storage::url($item->img_url) }}" alt="商品画像">
+                    </div>
+                @endif
+                <p class="item__name">{{$item->name}}</p>
+            </a>
         </div>
-        @endfor
+        @endforeach
     </div>
 </div>
 @endsection

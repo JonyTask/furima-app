@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ItemRequest;
 use App\Models\Item;
+use App\Models\Like;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Models\CategoryItem;
@@ -13,12 +14,17 @@ use App\Models\CategoryItem;
 class ItemController extends Controller
 {
     public function index(Request $request){
-        $items = Item::all();
+        if ($request->page == 'mylist'){
+            $items = Like::where('user_id', Auth::id())->get()->map(function ($like_item){
+                return $like_item->item;
+            });
+        }else {
+            $items = Item::where('user_id', '<>', Auth::id())->get();
+        }
         return view('index',compact('items'));
     }
 
     public function detail(Item $item){
-        // dd($item);
         return view('detail', compact('item'));
     }
 

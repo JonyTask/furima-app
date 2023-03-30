@@ -14,9 +14,15 @@
 @include('components.header')
 <div class="container">
     <div class="item">
-        <div class="item__img">
-            <img src="{{ \Storage::url($item->img_url) }}" alt="商品画像">
-        </div>
+        @if ($item->sold())
+            <div class="item__img sold">
+                <img src="{{ \Storage::url($item->img_url) }}" alt="商品画像">
+            </div>
+        @else
+            <div class="item__img">
+                <img src="{{ \Storage::url($item->img_url) }}" alt="商品画像">
+            </div>
+        @endif
         <div class="item__info">
             <h2 class="item__name">{{$item->name}}</h2>
             <p class="item__price">{{number_format($item->price)}}</p>
@@ -39,7 +45,13 @@
                     <p class="comment__count">{{$item->getComments()->count()}}</p>
                 </div>
             </div>
-            <a href="/item/purchase/{{$item->id}}" class="btn item__purchase">購入手続きへ</a>
+            @if ($item->sold())
+                <a href="#" class="btn item__purchase disable" disabled>売り切れました</a>
+            @elseif($item->mine())    
+                <a href="#" class="btn item__purchase disable" disabled>購入できません</a>
+            @else
+                <a href="/purchase/{{$item->id}}" class="btn item__purchase">購入手続きへ</a>
+            @endif
             <h3 class="item__section">商品説明</h3>
             <p class="item__description">{{$item->description}}</p>
             <h3 class="item__section">商品の情報</h3>

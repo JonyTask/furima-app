@@ -9,6 +9,30 @@
 
 }
 
+.sold{
+    position: relative;
+}
+
+.sold::before {
+    content: "";
+    top: 0;
+    left: 0;
+    border-bottom: 4em solid transparent;
+    border-left: 4em solid #c12748;
+    position: absolute;
+    z-index: 100;
+}
+.sold::after {
+    content: "Sold";
+    display: block;
+    top: 10px;
+    transform: rotate(-45deg);
+    color: #fff;
+    left: 0;
+    position: absolute;
+    z-index: 101;
+}
+
 .item__img{
     background-color: rgb(208, 208, 208);
     border-radius: 5px;

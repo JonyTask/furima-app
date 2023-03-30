@@ -73,4 +73,13 @@ class Item extends Model
         $comments = Comment::where('item_id', $this->id)->get();
         return $comments;
     }
+
+    public function sold(){
+        return SoldItem::where('item_id',$this->id)->exists();
+    }
+
+    public function mine(){
+        return $this->user_id == Auth::id();
+    }
+
 }

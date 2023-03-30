@@ -169,3 +169,8 @@ header{
     color: #ff333f;
     margin-top: 8px;
 }
+
+.disable{
+    color: #666 !important;
+    background-color: #CCC !important;
+}

@@ -7,6 +7,8 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PurchaseController;
 
+use App\Http\Middleware\SoldItemMiddleware;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/item/like/{item_id}',[LikeController::class, 'create']);
     Route::post('/item/unlike/{item_id}',[LikeController::class, 'destroy']);
     Route::post('/item/comment/{item_id}',[CommentController::class, 'create']);
-    Route::get('/item/purchase/{item}',[PurchaseController::class, 'index']);
+    Route::get('/purchase/{item_id}',[PurchaseController::class, 'index'])->middleware('purchase')->name('purchase.index');
+    Route::post('/purchase/{item_id}',[PurchaseController::class, 'purchase'])->middleware('purchase');
+    Route::get('/purchase/address/{item_id}',[PurchaseController::class, 'address']);
+    Route::post('/purchase/address/{item_id}',[PurchaseController::class, 'updateAddress']);
     Route::get('/mypage', [UserController::class, 'mypage']);
     Route::get('/mypage/profile', [UserController::class, 'profile']);
     Route::post('/mypage/profile', [UserController::class, 'updateProfile']);
