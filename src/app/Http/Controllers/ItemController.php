@@ -30,7 +30,7 @@ class ItemController extends Controller
 
     public function sellCreate(ItemRequest $request){
 
-        $img = $request->img_url;
+        $img = $request->file('img_url');
         $img_url = $img->store('img','public');
 
         $item = Item::create([

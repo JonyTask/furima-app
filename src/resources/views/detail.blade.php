@@ -19,7 +19,7 @@
         </div>
         <div class="item__info">
             <h2 class="item__name">{{$item->name}}</h2>
-            <p class="item__price">{{$item->price}}</p>
+            <p class="item__price">{{number_format($item->price)}}</p>
             <div class="item__form">
                 @if ($item->liked())
                 <form action="/item/unlike/{{$item->id}}" method="post" class="item__like">
@@ -39,7 +39,7 @@
                     <p class="comment__count">{{$item->getComments()->count()}}</p>
                 </div>
             </div>
-            <a href="#" class="btn item__purchase">購入手続きへ</a>
+            <a href="/item/purchase/{{$item->id}}" class="btn item__purchase">購入手続きへ</a>
             <h3 class="item__section">商品説明</h3>
             <p class="item__description">{{$item->description}}</p>
             <h3 class="item__section">商品の情報</h3>
@@ -66,7 +66,7 @@
                     <div class="comment">
                         <div class="comment__user">
                             <div class="user__img">
-                                <img src="#" alt="">
+                                <img src="{{ \Storage::url($comment->user->profile->img_url) }}" alt="">
                             </div>
                             <p class="user__name">{{$comment->user->name}}</p>
                         </div>

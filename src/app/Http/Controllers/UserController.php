@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function updateProfile(ProfileRequest $request){
 
-        $img = $request->img_url;
+        $img = $request->file('img_url');
         $img_url = $img->store('img','public');
 
         $profile = Profile::where('user_id', Auth::id())->first();

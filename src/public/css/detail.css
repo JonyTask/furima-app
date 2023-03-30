@@ -116,6 +116,9 @@
     height: 40px;
     border-radius: 50%;
     background-color: #D9D9D9;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
 }
 
 .user__name{
