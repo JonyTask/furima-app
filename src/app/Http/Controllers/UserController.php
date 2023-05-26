@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
@@ -24,7 +25,7 @@ class UserController extends Controller
 
         $img = $request->file('img_url');
         if (isset($img)){
-            $img_url = $img->store('img','public');
+            $img_url = Storage::disk('local')->put('public/img', $img);
         }else{
             $img_url = '';
         }

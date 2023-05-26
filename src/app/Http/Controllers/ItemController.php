@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ItemRequest;
@@ -37,7 +38,13 @@ class ItemController extends Controller
     public function sellCreate(ItemRequest $request){
 
         $img = $request->file('img_url');
-        $img_url = $img->store('img','public');
+
+        try {
+            //code...
+            $img_url = Storage::disk('local')->put('public/img', $img);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
 
         $item = Item::create([
             'name' => $request->name,
