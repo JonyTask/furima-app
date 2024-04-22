@@ -44,6 +44,21 @@ header{
     vertical-align: middle;
 }
 
+.header_search{
+    display:flex;
+    height:100%;
+    padding:10px 0;
+}
+.header_search--input{
+    border:none;
+    padding:0 20px;
+    width:25vw;
+}
+
+.header_search--button{
+    display:none;
+}
+
 .header__nav{
     display: flex;
 }

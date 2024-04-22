@@ -27,7 +27,7 @@ services:
         command:
             mysqld --default-authentication-plugin=mysql_native_password
         volumes:
-            - ./docker/mysql/data:/var/lib/mysql
+            - db-data:/var/lib/mysql
             - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
 
     phpmyadmin:
@@ -42,3 +42,6 @@ services:
             - mysql
         ports:
             - 8080:80
+
+volumes:
+    db-data:

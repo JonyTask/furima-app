@@ -23,3 +23,5 @@ down:
 cache:
 	docker-compose exec php php artisan cache:clear 
 	docker-compose exec php php artisan config:cache 
+stop:
+	docker-compose stop

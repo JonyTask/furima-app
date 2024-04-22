@@ -82,4 +82,8 @@ class Item extends Model
         return $this->user_id == Auth::id();
     }
 
+    public static function scopeItem($query, $item_name){
+        return $query->where('name', 'like', '%'.$item_name.'%');
+    }
+
 }

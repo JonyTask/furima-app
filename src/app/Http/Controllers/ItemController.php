@@ -29,6 +29,15 @@ class ItemController extends Controller
         return view('detail', compact('item'));
     }
 
+    public function search(Request $request){
+        $search_word = $request->search_item;
+        $query = Item::query();
+        $query = Item::scopeItem($query, $search_word);
+
+        $items = $query->get();
+        return view('index', compact('items'));
+    }
+
     public function sellView(){
         $categories = Category::all();
         $conditions = Condition::all();
