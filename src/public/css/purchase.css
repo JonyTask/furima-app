@@ -54,12 +54,27 @@
     justify-content: space-between;
 }
 
-.purchase__update{
+#purchase__update{
     color: #0073CC;
 }
 
 .purchase__value{
     padding: 40px 50px;
+}
+
+.input_destination{
+    border: none;
+    padding:10px 0;
+    margin-bottom: 10px;
+}
+
+.setting__flex{
+    display: flex;
+    justify-content: end;
+}
+
+#destination__setting{
+    display: none;
 }
 
 .buy__info table{

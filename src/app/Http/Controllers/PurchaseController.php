@@ -20,13 +20,15 @@ class PurchaseController extends Controller
         return view('purchase',compact('item','user'));
     }
 
-    public function purchase($item_id){
-        
+    public function purchase($item_id, Request $request){
         $item = Item::find($item_id);
         if ($item->user_id !== Auth::id()){
             SoldItem::create([
                 'user_id' => Auth::id(),
-                'item_id' => $item_id
+                'item_id' => $item_id,
+                'sending_postcode' => $request->destination_postcode,
+                'sending_address' => $request->destination_address,
+                'sending_building' => $request->destination_building ?? null,
             ]);
         }
         return redirect('/');
