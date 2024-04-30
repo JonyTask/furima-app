@@ -2,7 +2,7 @@
     <div class="header__logo">
         <a href="/"><img src="{{ asset('img/logo.png') }}" alt="ロゴ"></a>
     </div>
-    @if( Route::currentRouteName() !== 'login' && Route::currentRouteName() !== 'register' )
+    @if( !in_array(Route::currentRouteName(), ['register', 'login', 'verification.notice']) )
     <form class="header_search" action="/item" method="get">
         @csrf
         <input id="inputElement" class="header_search--input" type="text" name="search_item" placeholder="なにをお探しですか？">
@@ -32,14 +32,14 @@
     @endif
 </header>
 <script>
-    const inputElement = document.getElementById('inputElement');
-    const buttonElement = document.getElementById('buttonElement');
+    // const inputElement = document.getElementById('inputElement');
+    // const buttonElement = document.getElementById('buttonElement');
 
-    inputElement.addEventListener("change", function() {
-        if (!this.value == '') {
-            buttonElement.style.display = "unset";
-        } else {
-            buttonElement.style.display = "none";
-        }
-    })
+    // inputElement.addEventListener("change", function() {
+    //     if (!this.value == '') {
+    //         buttonElement.style.display = "unset";
+    //     } else {
+    //         buttonElement.style.display = "none";
+    //     }
+    // })
 </script>
