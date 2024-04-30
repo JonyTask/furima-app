@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PurchaseController;
-
-use App\Http\Middleware\SoldItemMiddleware;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ Route::get('/',[ItemController::class, 'index']);
 Route::get('/item/{item}',[ItemController::class, 'detail'])->name('item.detail');
 Route::get('/item', [ItemController::class, 'search']);
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','verified'])->group(function () {
     Route::get('/sell',[ItemController::class, 'sellView']);
     Route::post('/sell',[ItemController::class, 'sellCreate']);
     Route::post('/item/like/{item_id}',[LikeController::class, 'create']);
@@ -38,3 +38,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage/profile', [UserController::class, 'profile']);
     Route::post('/mypage/profile', [UserController::class, 'updateProfile']);
 });
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    session()->put('resent', true);
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth'])->name('verification.send');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/');
+})->name('verification.verify');
