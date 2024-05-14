@@ -5,10 +5,6 @@
     gap: 35px 10px;
 }
 
-.item{
-
-}
-
 .sold{
     position: relative;
 }
@@ -33,7 +29,7 @@
     z-index: 101;
 }
 
-.item__img{
+.item__img--container{
     background-color: rgb(208, 208, 208);
     border-radius: 5px;
     width: 15em;
@@ -41,6 +37,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.item__img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .item__name{
