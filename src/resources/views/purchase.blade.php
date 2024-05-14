@@ -43,7 +43,7 @@
                         <label>〒 <input class="input_destination" name="destination_postcode" value="{{ $user->profile->postcode }}" readonly></label><br>
                         <input class="input_destination" name="destination_address" value="{{ $user->profile->address }}" readonly><br>
                         @if (isset($user->profile->building))
-                        <input class="input_destination" name="destination_building" value="{ {$user->profile->building }}" readonly>
+                        <input class="input_destination" name="destination_building" value="{{ $user->profile->building }}" readonly>
                         @endif
                     </div>
                     <div class="setting__flex">
