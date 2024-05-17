@@ -28,7 +28,7 @@ class UserController extends Controller
         }else{
             $img_url = '';
         }
-        
+
         $profile = Profile::where('user_id', Auth::id())->first();
         if ($profile){
             $profile->update([
@@ -45,13 +45,13 @@ class UserController extends Controller
                 'postcode' => $request->postcode,
                 'address' => $request->address,
                 'building' => $request->building
-            ]);    
+            ]);
         }
 
         User::find(Auth::id())->update([
             'name' => $request->name
         ]);
-        
+
         return redirect('/');
     }
 
@@ -60,7 +60,7 @@ class UserController extends Controller
         if ($request->page == 'buy'){
             $items = SoldItem::where('user_id', $user->id)->get()->map(function ($sold_item) {
                 return $sold_item->item;
-            });         
+            });
         }else {
             $items = Item::where('user_id', $user->id)->get();
         }
