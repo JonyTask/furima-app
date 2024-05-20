@@ -5,7 +5,7 @@
 
 <!-- css読み込み -->
 @section('css')
-<link rel="stylesheet" href="{{ asset('/css/index.css')  }}" >
+<link rel="stylesheet" href="{{ asset('/css/index.css')  }}">
 @endsection
 
 <!-- 本体 -->
@@ -21,20 +21,20 @@
 <div class="container">
     <div class="items">
         @foreach ($items as $item)
-            <div class="item">
-                <a href="/item/{{$item->id}}">
+        <div class="item">
+            <a href="/item/{{$item->id}}">
                 @if ($item->sold())
-                    <div class="item__img sold">
-                        <img src="{{ \Storage::url($item->img_url) }}" alt="商品画像">
-                    </div>
+                <div class="item__img--container sold">
+                    <img src="{{ \Storage::url($item->img_url) }}" class="item__img" alt="商品画像">
+                </div>
                 @else
-                    <div class="item__img--container">
-                        <img src="{{ \Storage::url($item->img_url) }}" class="item__img" alt="商品画像">
-                    </div>
+                <div class="item__img--container">
+                    <img src="{{ \Storage::url($item->img_url) }}" class="item__img" alt="商品画像">
+                </div>
                 @endif
-                    <p class="item__name">{{$item->name}}</p>
-                </a>
-            </div>
+                <p class="item__name">{{$item->name}}</p>
+            </a>
+        </div>
         @endforeach
     </div>
 </div>
