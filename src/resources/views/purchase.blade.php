@@ -13,7 +13,7 @@
 
 @include('components.header')
 <div class="container">
-    <form class="buy" action="/purchase/{{$item->id}}" method="post">
+    <form class="buy" id="stripe-form" action="/purchase/{{$item->id}}" method="post">
         <div class="buy__left">
             <div class="item">
                 <div class="item__img">
@@ -29,9 +29,10 @@
                     <div class="purchase__flex">
                         <h3 class="purchase__title">支払い方法</h3>
                     </div>
-                    <select class="purchase__value" name="" id="payment">
+                    <select class="purchase__value" id="payment">
                         <option value="1">コンビニ払い</option>
                         <option value="2">銀行振り込み</option>
+                        <option value="3">クレジットカード払い</option>
                     </select>
                 </div>
                 <div class="purchase">
@@ -57,7 +58,7 @@
                 <table>
                     <tr>
                         <th>商品代金</th>
-                        <td>¥ {{ number_format($item->price) }}</td>
+                        <td id="item__price" value="{{ number_format($item->price) }}">¥ {{ number_format($item->price) }}</td>
                     </tr>
                     <tr>
                         <th>支払い方法</th>
@@ -71,15 +72,21 @@
             @elseif ($item->mine())
             <button class="btn disable" disabled>購入できません</button>
             @else
-            <button type="submit" class="btn">購入する</button>
+            <button id="purchase_btn" class="btn">購入する</button>
             @endif
         </div>
     </form>
 </div>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script src="{{ asset('js/stripe-payment.js') }}"></script>
 <script>
+    const stripeKey = "{{ config('stripe.stripe_public_key') }}";
+
     const select = document.getElementById('payment');
     const change_destination_btn = document.getElementById('purchase__update');
     const set_destination_btn = document.getElementById('destination__setting');
+    const form = document.getElementById('stripe-form');
 
     select.addEventListener('change', () => {
         const target = document.getElementById('pay_confirm');
