@@ -31,9 +31,10 @@ class PurchaseController extends Controller
             $sending_address,
             $sending_building
         ] = [
-            urlencode(Auth::id()),
-            urlencode($item->price),
-            urlencode($request->destination_postcode),
+            Auth::id(),
+            $item->price,
+            $request->destination_postcode,
+            //ASCIIコードに日本語はないため、住所と建物名はエンコードする必要あり
             urlencode($request->destination_address),
             urlencode($request->destination_building) ?? null
         ];
@@ -63,6 +64,7 @@ class PurchaseController extends Controller
     }
 
     public function success($item_id, Request $request){
+        //無事決済が成功した後に動くメソッドのため、決済以外でHTTPリクエストが送られた時用にクエリパラメータを検閲
         if(!$request->user_id || !$request->amount || !$request->sending_postcode || !$request->sending_address){
             throw new Exception("You need all Query Parameters (user_id, amount, sending_postcode, sending_address)");
         }
