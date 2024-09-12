@@ -5,7 +5,7 @@
 
 <!-- css読み込み -->
 @section('css')
-<link rel="stylesheet" href="{{ asset('/css/authentication.css')  }}" >
+<link rel="stylesheet" href="{{ asset('/css/authentication.css')  }}">
 @endsection
 
 <!-- 本体 -->
@@ -16,14 +16,14 @@
     @csrf
     <h1 class="page__title">会員登録</h1>
     <label for="name" class="entry__name">ユーザ名</label>
-    <input name="name" id="name" type="text" class="input">
+    <input name="name" id="name" type="text" class="input" value="{{ old('name') }}">
     <div class="form__error">
         @error('name')
         {{ $message }}
         @enderror
     </div>
     <label for="mail" class="entry__name">メールアドレス</label>
-    <input name="email" id="mail" type="email" class="input">
+    <input name="email" id="mail" type="email" class="input" value="{{ old('email') }}">
     <div class="form__error">
         @error('email')
         {{ $message }}
