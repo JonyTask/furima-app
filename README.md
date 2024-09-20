@@ -34,9 +34,10 @@ https://docs.stripe.com/payments/checkout?locale=ja-JP
 
 ## テストアカウント
 name: 管理者  
-email: admin@gmail.jp  
+email: admin@gmail.com  
 password: password  
 -------------------------
 name: 一般ユーザ  
-email: general@gmail.jp  
+email: general@gmail.com  
 password: password  
+-------------------------
