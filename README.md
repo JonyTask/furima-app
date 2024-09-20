@@ -31,3 +31,12 @@ STRIPE_SECRET_KEY="シークレットキー"
 
 以下のリンクは公式ドキュメントです。<br>
 https://docs.stripe.com/payments/checkout?locale=ja-JP
+
+## テストアカウント
+name: 管理者  
+email: admin@gmail.jp  
+password: password  
+-------------------------
+name: 一般ユーザ  
+email: general@gmail.jp  
+password: password  
