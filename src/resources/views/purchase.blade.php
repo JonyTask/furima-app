@@ -79,39 +79,5 @@
 </div>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="https://checkout.stripe.com/checkout.js"></script>
-<script src="{{ asset('js/stripe-payment.js') }}"></script>
-<script>
-    const stripeKey = "{{ config('stripe.stripe_public_key') }}";
-
-    const select = document.getElementById('payment');
-    const change_destination_btn = document.getElementById('purchase__update');
-    const set_destination_btn = document.getElementById('destination__setting');
-    const form = document.getElementById('stripe-form');
-
-    select.addEventListener('change', () => {
-        const target = document.getElementById('pay_confirm');
-        var index = select.selectedIndex;
-        var txt = select.options[index].label;
-        target.textContent = txt;
-    });
-
-    change_destination_btn.addEventListener('click', (e) => {
-        e.target.style.display = "none";
-        set_destination_btn.style.display = "unset";
-        var inputs = document.getElementsByClassName('input_destination');
-        for (const input of inputs) {
-            input.readOnly = false;
-        }
-        inputs[0].focus();
-    });
-
-    set_destination_btn.addEventListener('click', (e) => {
-        e.target.style.display = "none";
-        change_destination_btn.style.display = "unset";
-        var inputs = document.getElementsByClassName('input_destination');
-        for (const input of inputs) {
-            input.readOnly = true;
-        }
-    });
-</script>
+<script src="{{ asset('js/purchase.js') }}"></script>
 @endsection
