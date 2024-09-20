@@ -66,3 +66,10 @@
     padding: 20px 80px;
     font-weight: bold;
 }
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .item__img--container {
+        width: 25vw;
+        height: 10em;
+    }
+}

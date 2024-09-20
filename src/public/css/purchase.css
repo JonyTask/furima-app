@@ -4,7 +4,7 @@
 }
 
 .buy__left{
-    width: 50%;
+    width: 45%;
 }
 
 .buy__right{
@@ -92,4 +92,22 @@
     padding: 50px;
 }
 
+@media (min-width: 768px) and (max-width: 850px) {
+    .buy__right {
+        width: 45%;
+    }
 
+    .buy__info table {
+        width: 100%;
+    }
+    
+    #purchase_btn {
+        width: 100%;
+    }
+
+    .table__header ,
+    .table__data{
+        padding: unset !important;
+        vertical-align: middle;
+    }
+}

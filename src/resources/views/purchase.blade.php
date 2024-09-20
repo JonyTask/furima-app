@@ -57,12 +57,12 @@
             <div class="buy__info">
                 <table>
                     <tr>
-                        <th>商品代金</th>
-                        <td id="item__price" value="{{ number_format($item->price) }}">¥ {{ number_format($item->price) }}</td>
+                        <th class="table__header">商品代金</th>
+                        <td id="item__price" class="table__data" value="{{ number_format($item->price) }}">¥ {{ number_format($item->price) }}</td>
                     </tr>
                     <tr>
-                        <th>支払い方法</th>
-                        <td id="pay_confirm">コンビニ払い</td>
+                        <th class="table__header">支払い方法</th>
+                        <td id="pay_confirm" class="table__data">コンビニ払い</td>
                     </tr>
                 </table>
             </div>

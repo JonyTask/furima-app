@@ -102,22 +102,6 @@ header{
     padding: 5%;
 }
 
-/* .btn{
-    background-color: #ff333f;
-    border-radius: 5px;
-    width: 450px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn__link{
-    display: inline-block;
-    color: #fff;
-    font-weight: bold;
-} */
-
 .btn{
     display: flex;
     align-items: center;
@@ -192,4 +176,10 @@ header{
 .disable{
     color: #666 !important;
     background-color: #CCC !important;
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .header__logo {
+        width: 25vw;
+    }
 }

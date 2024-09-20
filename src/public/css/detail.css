@@ -180,3 +180,22 @@
 .comment__form-btn{
     margin-top: 30px;
 }
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .item__img {
+        width: 45vw;
+    }
+    
+    .item__info {
+        width: 45vw;
+    }
+
+    .item__purchase,
+    .comment__form-btn {
+        width: 100%;
+    }
+
+    .comment__form-textarea {
+        width: 100%;
+    }
+}
