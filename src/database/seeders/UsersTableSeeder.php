@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
     {
         $param = [
             'name' => '管理者',
-            'email' => 'admin@estra.jp',
+            'email' => 'admin@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('password'),
         ];
@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
 
         $param = [
             'name' => '一般ユーザ',
-            'email' => 'general@estra.jp',
+            'email' => 'general@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('password'),
         ];
