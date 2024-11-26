@@ -33,12 +33,12 @@ class ItemTest extends TestCase
 
         $response = $this->actingAs($user)->get('/?page=mylist');
         $expected_data = [
-            'name' => "スニーカー",
-            'price' => 8000,
-            'description' => "3ヶ月ほど履いたスニーカーです。そこまで履いていないため、比較的状態は良いです。",
-            'img_url' => "public/img/sneaker.jpeg",
+            'name' => '腕時計',
+            'price' => 15000,
+            'description' => 'スタイリッシュなデザインのメンズ腕時計',
+            'img_url' => 'public/img/mens_clock.jpg',
             'user_id' => 2,
-            'condition_id' => 2,
+            'condition_id' => 1,
         ];
 
         $response->assertStatus(200);
@@ -55,14 +55,14 @@ class ItemTest extends TestCase
 
     //商品検索
     public function test_search_item(){
-        $response = $this->get('/item?search_item=テレビ');
+        $response = $this->get('/item?search_item=ノートPC');
         $expected_data = [
-            'name' => "テレビ",
-            'price' => 10000,
-            'description' => "2年ほど使用しました。画面は32インチです。",
-            'img_url' => "public/img/TV.jpeg",
+            'name' => 'ノートPC',
+            'price' => 45000,
+            'description' => '高性能なノートパソコン',
+            'img_url' => 'public/img/laptop_PC.jpg',
             'user_id' => 2,
-            'condition_id' => 3,
+            'condition_id' => 1,
         ];
 
         $response->assertStatus(200);

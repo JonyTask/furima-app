@@ -14,21 +14,24 @@ class ConditionsTableSeeder extends Seeder
      */
     public function run()
     {
-        $param = [
-            'condition' => '良好'
+        $params = [
+            [
+                'condition' => '良好',
+            ],
+            [
+                'condition' => '目立った傷や汚れなし',
+            ],
+            [
+                'condition' => 'やや傷や汚れあり',
+            ],
+            [
+                'condition' => '状態が悪い',
+            ],
         ];
-        Condition::create($param);
-        $param = [
-            'condition' => '目立った傷や汚れなし'
-        ];
-        Condition::create($param);
-        $param = [
-            'condition' => 'やや傷や汚れあり'
-        ];
-        Condition::create($param);
-        $param = [
-            'condition' => '状態が悪い'
-        ];
-        Condition::create($param);
+
+        $range = count($params);
+        for ($i = 0; $i < $range; $i++) {
+            Condition::create($params[$i]);
+        }
     }
 }
