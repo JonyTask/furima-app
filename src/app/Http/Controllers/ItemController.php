@@ -92,7 +92,8 @@ class ItemController extends Controller
         return redirect()->route('item.detail',['item' => $item->id]);
     }
     
-    private function getPreviousQuery(){
+    private function getPreviousQuery() : ?string
+    {
         $previousUrl = url()->previous();
         $previousQueryParams = [];
         parse_str(parse_url($previousUrl, PHP_URL_QUERY), $previousQueryParams);
