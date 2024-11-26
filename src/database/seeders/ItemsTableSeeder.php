@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Item;
 use App\Models\Condition;
+use App\Models\Item;
+use App\Models\Like;
 
 class ItemsTableSeeder extends Seeder
 {
@@ -74,5 +75,10 @@ class ItemsTableSeeder extends Seeder
             'condition_id' => Condition::$UNUSED,
         ];
         Item::create($param);
+
+        Like::create([
+            'user_id' => 1,
+            'item_id' => 1,
+        ]);
     }
 }

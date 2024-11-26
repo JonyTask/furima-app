@@ -17,16 +17,16 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'name' => '管理者',
-            'email' => 'admin@gmail.com',
+            'name' => '一般ユーザ1',
+            'email' => 'general1@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('password'),
         ];
         User::create($param);
 
         $param = [
-            'name' => '一般ユーザ',
-            'email' => 'general@gmail.com',
+            'name' => '一般ユーザ2',
+            'email' => 'general2@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('password'),
         ];
