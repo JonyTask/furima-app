@@ -21,14 +21,9 @@ class PurchaseMiddleware
     {
         $param = $request->route()->parameter('item_id');
 
-        $sold = SoldItem::where('item_id', $param)->exists();
-        if ($sold){
-            return redirect()->route('item.detail',['item' => $request->item_id]);
-        }
-
         $item = Item::find($param);
         if($item->user_id == Auth::id()){
-            return redirect()->route('item.detail',['item' => $request->item_id]);
+            return redirect()->route('item.detail',['item' => $request->item_id])->with('flash_alert', '出品者が購入することはできません');
         }
 
         return $next($request);
