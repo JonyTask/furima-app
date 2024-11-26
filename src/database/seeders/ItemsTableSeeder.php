@@ -16,69 +16,101 @@ class ItemsTableSeeder extends Seeder
      */
     public function run()
     {
-        $param = [
-            'name' => 'スニーカー',
-            'price' => 8000,
-            'description' => '3ヶ月ほど履いたスニーカーです。そこまで履いていないため、比較的状態は良いです。',
-            'img_url' => 'public/img/sneaker.jpeg',
-            'user_id' => 2,
-            'condition_id' => Condition::$HARMLESS,
+        $params = [
+            [
+                'name' => '腕時計',
+                'price' => 15000,
+                'description' => 'スタイリッシュなデザインのメンズ腕時計',
+                'img_url' => 'public/img/mens_clock.jpg',
+                'user_id' => 2,
+                'condition_id' => Condition::$UNUSED,
+            ],
+            [
+                'name' => 'HDD',
+                'price' => 5000,
+                'description' => '高速で信頼性の高いハードディスク',
+                'img_url' => 'public/img/hard_disk.jpg',
+                'user_id' => 2,
+                'condition_id' => Condition::$HARMLESS,
+            ],
+            [
+                'name' => '玉ねぎ3束',
+                'price' => 300,
+                'description' => '新鮮な玉ねぎ3束のセット',
+                'img_url' => 'public/img/onion.jpg',
+                'user_id' => 2,
+                'condition_id' => Condition::$HARMED,
+            ],
+            [
+                'name' => '革靴',
+                'price' => 4000,
+                'description' => 'クラシックなデザインの革靴',
+                'img_url' => 'public/img/leather_shoes.jpg',
+                'user_id' => 2,
+                'condition_id' => Condition::$BAD_CONDITION,
+            ],
+            [
+                'name' => 'ノートPC',
+                'price' => 45000,
+                'description' => '高性能なノートパソコン',
+                'img_url' => 'public/img/laptop_PC.jpg',
+                'user_id' => 2,
+                'condition_id' => Condition::$UNUSED,
+            ],
+            [
+                'name' => 'マイク',
+                'price' => 8000,
+                'description' => '高音質のレコーディング用マイク',
+                'img_url' => 'public/img/mic.jpg',
+                'user_id' => 2,
+                'condition_id' => Condition::$HARMLESS,
+            ],
+            [
+                'name' => 'ショルダーバッグ',
+                'price' => 3500,
+                'description' => 'おしゃれなショルダーバッグ',
+                'img_url' => 'public/img/shoulder_bag.jpg',
+                'user_id' => 1,
+                'condition_id' => Condition::$HARMED,
+            ],
+            [
+                'name' => 'タンブラー',
+                'price' => 500,
+                'description' => '使いやすいタンブラー',
+                'img_url' => 'public/img/tumbler.jpg',
+                'user_id' => 1,
+                'condition_id' => Condition::$BAD_CONDITION,
+            ],
+            [
+                'name' => 'コーヒーミル',
+                'price' => 4000,
+                'description' => '手動のコーヒーミル',
+                'img_url' => 'public/img/coffer_mill.jpg',
+                'user_id' => 1,
+                'condition_id' => Condition::$UNUSED,
+            ],
+            [
+                'name' => 'メイクセット',
+                'price' => 2500,
+                'description' => '便利なメイクアップセット',
+                'img_url' => 'public/img/make_set.jpg',
+                'user_id' => 1,
+                'condition_id' => Condition::$HARMLESS,
+            ],
         ];
-        Item::create($param);
 
-        $param = [
-            'name' => '帽子',
-            'price' => 3200,
-            'description' => '6ヶ月ほど前に買いました。ほとんど使用していません。',
-            'img_url' => 'public/img/hat.jpeg',
-            'user_id' => 2,
-            'condition_id' => Condition::$UNUSED,
-        ];
-        Item::create($param);
-
-        $param = [
-            'name' => 'メガネ',
-            'price' => 1000,
-            'description' => '1年以上使用しました。度は左右-1.75です。',
-            'img_url' => 'public/img/glasses.jpeg',
-            'user_id' => 2,
-            'condition_id' => Condition::$BAD_CONDITION,
-        ];
-        Item::create($param);
-
-        $param = [
-            'name' => 'テレビ',
-            'price' => 10000,
-            'description' => '2年ほど使用しました。画面は32インチです。',
-            'img_url' => 'public/img/TV.jpeg',
-            'user_id' => 2,
-            'condition_id' => Condition::$HARMED,
-        ];
-        Item::create($param);
-
-        $param = [
-            'name' => '財布',
-            'price' => 4000,
-            'description' => '半年ほど使用しました。傷はありません。',
-            'img_url' => 'public/img/wallet.jpeg',
-            'user_id' => 2,
-            'condition_id' => Condition::$HARMLESS,
-        ];
-        Item::create($param);
-
-        $param = [
-            'name' => 'イアリング',
-            'price' => 8000,
-            'description' => '2ヶ月ほど前に海外で購入しました。ブランド品です。未使用です。',
-            'img_url' => 'public/img/earrings.jpeg',
-            'user_id' => 2,
-            'condition_id' => Condition::$UNUSED,
-        ];
-        Item::create($param);
+        $range = count($params);
+        for ($i = 0; $i < $range; $i++){
+            Item::create($params[$i]);
+        }
 
         Like::create([
             'user_id' => 1,
             'item_id' => 1,
+        ]);
+        Like::create([
+            'user_id' => 2,
+            'item_id' => 7,
         ]);
     }
 }
