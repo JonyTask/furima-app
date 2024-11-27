@@ -92,6 +92,7 @@ class ItemController extends Controller
         return redirect()->route('item.detail',['item' => $item->id]);
     }
     
+    //mylist表示前の検索クエリを取得
     private function getPreviousQuery() : ?string
     {
         $previousUrl = url()->previous();

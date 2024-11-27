@@ -15,6 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        //前者はパッケージにあるデフォルトで呼び出されるクラス
+        //後者はデフォルトのクラスに少し変更を加えたクラス
         $this->app->bind(PackageHasInDatabase::class, HasInDatabase::class);
     }
 
