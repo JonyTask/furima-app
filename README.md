@@ -6,7 +6,6 @@
 
 ```
 make init
-make fresh
 ```
 
 ※Makefileは実行するコマンドを省略することができる便利な設定ファイルです。コマンドの入力を効率的に行えるようになります。<br>
@@ -41,3 +40,15 @@ name: 一般ユーザ
 email: general@gmail.com  
 password: password  
 -------------------------
+
+## PHPUnitを利用したテストに関して
+以下のコマンド:  
+```
+docker-compose exec php bash
+php artisan migrate:fresh --env=testing
+./vendor/bin/phpunit
+```
+
+## 生徒様へ
+普段よりお世話になっております。  
+こちらの模範解答に関するご質問、またこちらに不備を見つけた、などの際は気兼ねなく申し付けください。
