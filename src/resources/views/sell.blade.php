@@ -15,7 +15,14 @@
     <div class="sell__img">
         <label class="btn2">
             画像を選択する
-            <input id="target" name="img_url" class="btn2--input" type="file" name="test" accept="image/png, image/jpeg">
+            <input
+                id="target"
+                name="img_url"
+                class="btn2--input"
+                type="file"
+                name="test"
+                accept="image/png, image/jpeg"
+            >
         </label>
     </div>
     <div id="appload" class="appload">
@@ -32,7 +39,13 @@
     <div class="sell__categories">
         @foreach ($categories as $category)
         <div class="sell__category">
-            <input name="categories[]" id="{{$category->id}}" type="checkbox" class="sell__check" value="{{$category->id}}">
+            <input
+                name="categories[]"
+                id="{{$category->id}}"
+                type="checkbox"
+                class="sell__check"
+                value="{{$category->id}}"
+            >
             <label for="{{$category->id}}" class="sell__check-label">{{$category->category}}</label>
         </div>
         @endforeach

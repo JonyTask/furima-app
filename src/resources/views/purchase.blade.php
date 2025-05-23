@@ -25,47 +25,17 @@
                 </div>
             </div>
             <div class="purchases">
-                <div class="purchase">
-                    <div class="purchase__flex">
-                        <h3 class="purchase__title">支払い方法</h3>
-                    </div>
-                    <select class="purchase__value" id="payment">
-                        <option value="1">コンビニ払い</option>
-                        <option value="2">銀行振り込み</option>
-                        <option value="3">クレジットカード払い</option>
-                    </select>
-                </div>
-                <div class="purchase">
-                    <div class="purchase__flex">
-                        <h3 class="purchase__title">配送先</h3>
-                        <button type="button" id="purchase__update">変更する</button>
-                    </div>
-                    <div class="purchase__value">
-                        <label>〒 <input class="input_destination" name="destination_postcode" value="{{ $user->profile->postcode }}" readonly></label><br>
-                        <input class="input_destination" name="destination_address" value="{{ $user->profile->address }}" readonly><br>
-                        @if (isset($user->profile->building))
-                        <input class="input_destination" name="destination_building" value="{{ $user->profile->building }}" readonly>
-                        @endif
-                    </div>
-                    <div class="setting__flex">
-                        <button type="button" id="destination__setting">変更完了</button>
-                    </div>
-                </div>
+                @component('components.purchase-method')
+                @endcomponent
+
+                @component('components.set-destination', ['user' => $user])
+                @endcomponent
             </div>
         </div>
         <div class="buy__right">
-            <div class="buy__info">
-                <table>
-                    <tr>
-                        <th class="table__header">商品代金</th>
-                        <td id="item__price" class="table__data" value="{{ number_format($item->price) }}">¥ {{ number_format($item->price) }}</td>
-                    </tr>
-                    <tr>
-                        <th class="table__header">支払い方法</th>
-                        <td id="pay_confirm" class="table__data">コンビニ払い</td>
-                    </tr>
-                </table>
-            </div>
+            @component('components.info-confirm-table', ['item' => $item])
+            @endcomponent
+            
             @csrf
             @if ($item->sold())
             <button class="btn disable" disabled>売り切れました</button>

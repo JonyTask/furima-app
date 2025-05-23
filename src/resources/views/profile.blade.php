@@ -5,7 +5,7 @@
 
 <!-- css読み込み -->
 @section('css')
-<link rel="stylesheet" href="{{ asset('/css/profile.css')  }}" >
+<link rel="stylesheet" href="{{ asset('/css/profile.css')  }}">
 @endsection
 
 <!-- 本体 -->
@@ -16,13 +16,8 @@
     @csrf
     <h1 class="page__title">プロフィール設定</h1>
     <div class="user">
-        <div class="user__img">
-            @if (isset($profile->img_url))
-                <img class="user__icon" src="{{ \Storage::url($profile->img_url) }}" alt="">
-            @else
-                <img id="myImage" class="user__icon" src="{{ asset('img/icon.png') }}" alt="">
-            @endif
-        </div>
+        @component('components.user-image', ['profile' => $profile])
+        @endcomponent
         <div class="profile__user--btn">
             <label class="btn2">
                 画像を選択する
@@ -34,7 +29,7 @@
     <input name="name" id="name" type="text" class="input" value="{{ Auth::user()->name }}">
     <div class="form__error">
         @error('name')
-            {{ $message }}
+        {{ $message }}
         @enderror
     </div>
 
@@ -42,7 +37,7 @@
     <input name="postcode" id="postcode" type="text" class="input" value="{{ $profile ? $profile->postcode : '' }}" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');">
     <div class="form__error">
         @error('postcode')
-            {{ $message }}
+        {{ $message }}
         @enderror
     </div>
 
@@ -50,7 +45,7 @@
     <input name="address" id="address" type="text" class="input" value="{{ $profile ? $profile->address : '' }}">
     <div class="form__error">
         @error('address')
-            {{ $message }}
+        {{ $message }}
         @enderror
     </div>
 
@@ -59,17 +54,17 @@
     <button class="btn btn--big">更新する</button>
 </form>
 <script>
-const target = document.getElementById('target');
-target.addEventListener('change', function (e) {
-    const file = e.target.files[0]
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        const img = document.getElementById("myImage");
-        console.log(img.src);
-        img.src = e.target.result;
-        console.log(img.src);
-    }
-    reader.readAsDataURL(file);
-}, false);
+    const target = document.getElementById('target');
+    target.addEventListener('change', function(e) {
+        const file = e.target.files[0]
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.getElementById("myImage");
+            console.log(img.src);
+            img.src = e.target.result;
+            console.log(img.src);
+        }
+        reader.readAsDataURL(file);
+    }, false);
 </script>
 @endsection

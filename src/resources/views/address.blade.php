@@ -11,21 +11,40 @@
     @csrf
     <h1 class="page__title">住所の変更</h1>
     <label for="postcode" class="entry__name">郵便番号</label>
-    <input name="postcode" id="postcode" type="text" class="input" value="{{$user->profile->postcode}}" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');">
+    <input
+        name="postcode"
+        id="postcode"
+        type="text"
+        class="input"
+        value="{{$user->profile->postcode}}"
+        size="10"
+        maxlength="8"
+        onKeyUp="AjaxZip3.zip2addr(this,'','address','address');">
     <div class="form__error">
         @error('postcode')
-            {{ $message }}
+        {{ $message }}
         @enderror
     </div>
     <label for="address" class="entry__name">住所</label>
-    <input name="address" id="address" type="text" class="input" value="{{$user->profile->address}}">
+    <input
+        name="address"
+        id="address"
+        type="text"
+        class="input"
+        value="{{$user->profile->address}}">
     <div class="form__error">
         @error('address')
-            {{ $message }}
+        {{ $message }}
         @enderror
     </div>
     <label for="building" class="entry__name">建物名</label>
-    <input name="building" id="building" type="text" class="input" value="{{$user->profile->building}}">
+    <input
+        name="building"
+        id="building"
+        type="text"
+        class="input"
+        value="{{$user->profile->building}}"
+    >
     <button class="btn btn--big">更新する</button>
 </form>
 
