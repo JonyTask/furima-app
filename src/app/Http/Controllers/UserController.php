@@ -55,15 +55,20 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function mypage(Request $request){
+    public function mypage(Request $request)
+    {
         $user = User::find(Auth::id());
-        if ($request->page == 'buy'){
-            $items = SoldItem::where('user_id', $user->id)->get()->map(function ($sold_item) {
+        [$user_id, $user_name] = array_values($user->only(['id', 'name']));
+
+        $profile = $user->profile;
+
+        if ($request->page == 'buy') {
+            $items = SoldItem::where('user_id', $user_id)->get()->map(function ($sold_item) {
                 return $sold_item->item;
-            });         
-        }else {
-            $items = Item::where('user_id', $user->id)->get();
+            });
+        } else {
+            $items = Item::where('user_id', $user_id)->get();
         }
-        return view('mypage', compact('user', 'items'));
+        return view('mypage', compact('user_name', 'items', 'profile'));
     }
 }
