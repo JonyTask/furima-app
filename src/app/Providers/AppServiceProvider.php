@@ -18,6 +18,11 @@ class AppServiceProvider extends ServiceProvider
         //前者はパッケージにあるデフォルトで呼び出されるクラス
         //後者はデフォルトのクラスに少し変更を加えたクラス
         $this->app->bind(PackageHasInDatabase::class, HasInDatabase::class);
+
+        if ($this->app->environment('local')) {
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
+        }
     }
 
     /**
